@@ -175,6 +175,16 @@ cdef class Packet(Buffer):
             else:
                 self.struct.dts = v
 
+    property gemfield_flag:
+        def __get__(self):
+            return self.struct.flags
+
+        def __set__(self, v):
+            if v is None:
+                self.struct.flags = 0
+            else:
+                self.struct.flags = v
+
     property pos:
         """
         The byte position of this packet within the :class:`.Stream`.
